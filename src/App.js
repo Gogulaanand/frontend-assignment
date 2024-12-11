@@ -32,7 +32,7 @@ function App() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div className="App">
+    <div className="App" data-testid="app">
       <h1>Kick Starter Projects</h1>
       <Projects projects={currentProjects} loading={loading} />
       <Pagination projectsPerPage={projectsPerPage} totalProjects={data.length} paginate={paginate} />

@@ -7,7 +7,7 @@ export const Projects = ({ projects, loading }) => {
   }
 
   return (
-    <table className="table" role="table" aria-label="Kickstarter Projects Table">
+    <table className="table" role="table" aria-label="Kickstarter Projects Table" data-testid="project-table">
       <thead>
         <tr>
           <th className="thTd" scope="col">S.No</th>

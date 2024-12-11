@@ -26,7 +26,7 @@ export const Pagination = ({ projectsPerPage, totalProjects, paginate }) => {
   }
 
   return (
-    <nav aria-label="Page navigation">
+    <nav aria-label="Page navigation" data-testid="pagination">
       <ul className="pagination">
         <li key="prev" className={`prev ${currentPage === 1 ? 'disabled' : ''}`}>
           <button
