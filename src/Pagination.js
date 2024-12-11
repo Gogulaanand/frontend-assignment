@@ -3,8 +3,9 @@ import React, {useState} from 'react';
 
 export const Pagination = ({ projectsPerPage, totalProjects, paginate }) => {
   const pageNumbers = [];
+  const totalPages = Math.ceil(totalProjects / projectsPerPage)
 
-  for(let i = 1; i <= Math.ceil(totalProjects / projectsPerPage); i++) {
+  for(let i = 1; i <= totalPages; i++) {
     pageNumbers.push(i);
   }
 
@@ -27,7 +28,7 @@ export const Pagination = ({ projectsPerPage, totalProjects, paginate }) => {
   return (
 		<div>
 			<ul className="pagination">
-				<li key="prev" className="prev">
+        <li key="prev" className={`prev ${currentPage === 1 ? 'disabled' : ''}`}>
 					<a onClick={prevPage} href="!#">
 						&lt;
 					</a>
@@ -45,7 +46,7 @@ export const Pagination = ({ projectsPerPage, totalProjects, paginate }) => {
 						</a>
 					</li>
 				))}
-				<li key="next" className="next">
+				<li key="next" className={`next ${currentPage === totalPages ? 'disabled' : ''}`}>
 					<a onClick={nextPage} href="!#">
 						&gt;
 					</a>
