@@ -26,32 +26,40 @@ export const Pagination = ({ projectsPerPage, totalProjects, paginate }) => {
   }
 
   return (
-		<div>
-			<ul className="pagination">
+    <nav aria-label="Page navigation">
+      <ul className="pagination">
         <li key="prev" className={`prev ${currentPage === 1 ? 'disabled' : ''}`}>
-					<a onClick={prevPage} href="!#">
-						&lt;
-					</a>
-				</li>
-				{pageNumbers.map((number) => (
-					<li key={number} className={`${currentPage === number ? 'active' : ''}`}>
-						<a
-							onClick={() => {
-								setCurrentPage(number);
-								paginate(number);
-							}}
-							href="!#"
-						>
-							{number}
-						</a>
-					</li>
-				))}
-				<li key="next" className={`next ${currentPage === totalPages ? 'disabled' : ''}`}>
-					<a onClick={nextPage} href="!#">
-						&gt;
-					</a>
-				</li>
-			</ul>
-		</div>
-	);
+          <button
+            onClick={prevPage}
+            disabled={currentPage === 1}
+            aria-label="Previous page"
+          >
+            &lt;
+          </button>
+        </li>
+        {pageNumbers.map((number) => (
+          <li key={number} className={`${currentPage === number ? 'active' : ''}`}>
+            <button
+              onClick={() => {
+                setCurrentPage(number);
+                paginate(number);
+              }}
+              aria-current={currentPage === number ? 'page' : undefined}
+            >
+              {number}
+            </button>
+          </li>
+        ))}
+        <li key="next" className={`next ${currentPage === totalPages ? 'disabled' : ''}`}>
+          <button
+            onClick={nextPage}
+            disabled={currentPage === totalPages}
+            aria-label="Next page"
+          >
+            &gt;
+          </button>
+        </li>
+      </ul>
+    </nav>
+  );
 }
